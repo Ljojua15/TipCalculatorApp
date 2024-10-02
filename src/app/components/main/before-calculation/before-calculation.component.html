@@ -1,0 +1,16 @@
+<div class="before-calculation">
+  <div class="before-calculation__bill">
+    <p>Bill</p>
+    <input type="text"  placeholder="$">
+  </div>
+
+  <div class="before-calculation__tip">
+    <p>Select Tip %</p>
+    <div *ngFor="let perc of tipsPercent; index as i">
+      <div class="inputs" *ngIf="perc.name !== 'Custom'">{{perc.name}}</div>
+      <input *ngIf="perc.name === 'Custom'" type="text" placeholder="{{perc.name}}">
+    </div>
+  </div>
+
+  <div class="before-calculation__people"></div>
+</div>
