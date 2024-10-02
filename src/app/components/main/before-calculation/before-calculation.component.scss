@@ -1,24 +1,26 @@
 @use '../../../../assets/mixins/mixins.scss';
-
-
-.before-calculation{
-  width: 379px;
-  height: 388px;
-  @include mixins.flex(center,center,column);
-
-
-  &__tip{
+.before-calculation {
     width: 379px;
-    height: 152px;
-    @include mixins.flex(center,center,column);
-    flex-wrap: 1;
-
-
-
-
-  }
+    height: 388px;
+    @include mixins.flex(center, center, column);
+    background-color: bisque;
+    &__tip {
+        width: 379px;
+        height: 152px;
+        @include mixins.flex(center, center, row);
+        background-color: rgb(41, 41, 110);
+        &--place {
+            @include mixins.flex(center, center, row);
+            background-color: rgb(41, 41, 110);
+            div {
+                width: 117px;
+                height: 48px;
+                border-radius: 5px;
+                background-color: #00474B;
+            }
+        }
+    }
 }
-
 
 // width: 117px;
 // height: 48px;
