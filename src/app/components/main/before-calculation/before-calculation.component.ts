@@ -22,11 +22,20 @@ export class BeforeCalculationComponent {
   public customPercent: any = 0;
   sum: number = 0;
 
-  constructor() {}
+  takenInfo = new Map([
+    ['bill', this.bill],
+    ['percent', this.percent],
+    ['customPercent', this.customPercent],
+    ['percent', this.percent],
+  ]);
+
+  constructor() {
+    console.log(this.takenInfo.get('bill'));
+  }
 
   billTake(event: any): any {
     this.bill = parseFloat(event.target.value);
-    console.log(this.bill, 'bill');
+    // console.log(this.bill, 'bill')
     return this.bill;
   }
 
