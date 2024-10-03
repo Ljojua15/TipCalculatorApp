@@ -5,19 +5,21 @@
     @include mixins.flex(center, center, column);
 
     &__bill{
-      width: 98%;
+      width: 90%;
       @include mixins.flex(flex-start, center, column);
       input{
-        width: 100%;
+        width: 98%;
         height: 48px;
+        text-align: right;
+        font-size: 24px;
 
       }
     }
 
     &__tip{
       max-width: 380px;
-      width: 100%;
-      @include mixins.flex(center, center, column);
+      width: 90%;
+      @include mixins.flex(flex-start, center, column);
 
       &--place{
         max-width: 360px;
@@ -45,6 +47,8 @@
           width: 100px;
           height: 40px;
           border-radius: 10px;
+          text-align: center;
+          font-size: 24px;
         }
       }
 
@@ -52,13 +56,14 @@
     }
 
     &__people{
-      width: 98%;
+      width: 90%;
 
       @include mixins.flex(flex-start, center, column);
       input{
-        width: 100%;
+        width: 98%;
         height: 48px;
-
+        text-align: right;
+        font-size: 24px;
       }
     }
 
