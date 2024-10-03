@@ -1,18 +1,19 @@
-import { Component, Output } from '@angular/core';
+import { Component, Input, OnChanges } from '@angular/core';
 import { tipsPercent } from './tips';
 import { CommonModule } from '@angular/common';
 import { log } from 'console';
 import { AnySoaRecord } from 'dns';
 import { FormsModule } from '@angular/forms';
+import { ChildCalculatedComponent } from "./child-calculated/child-calculated.component";
 
 @Component({
   selector: 'app-before-calculation',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, ChildCalculatedComponent],
   templateUrl: './before-calculation.component.html',
   styleUrl: './before-calculation.component.scss',
 })
-export class BeforeCalculationComponent {
+export class BeforeCalculationComponent implements OnChanges {
   public totalAmount: number = 0;
   public tipAmount: number = 0;
   public readonly tipsPercent = tipsPercent;
@@ -33,6 +34,13 @@ export class BeforeCalculationComponent {
     console.log(this.takenInfo.get('bill'));
   }
 
+
+  ngOnChanges() {
+   this.sum = this.calculateBillS()
+   console.log(this.sum,'relly?');
+  this.calculateBillS()
+   
+  }
   billTake(event: any): any {
     this.bill = parseFloat(event.target.value);
     // console.log(this.bill, 'bill')
@@ -55,5 +63,18 @@ export class BeforeCalculationComponent {
     this.people = parseFloat(event.target.value);
     console.log(this.people, 'people');
     return this.bill;
+  }
+
+  calculateBillS(){
+    console.log(this.customPercent ?( this.bill +(this.bill * this.customPercent / 100)) / this.people : 
+    ( this.bill +(this.bill * this.percent / 100)) / this.people, 'es ra chemi');
+    
+    return this.customPercent ?( this.bill +(this.bill * this.customPercent / 100)) / this.people : 
+    ( this.bill +(this.bill * this.percent / 100)) / this.people
+  }
+
+  calcuTipS(){
+    return this.customPercent ? (this.bill * this.customPercent / 100) / this.people :
+    (this.bill * this.percent / 100) / this.people
   }
 }

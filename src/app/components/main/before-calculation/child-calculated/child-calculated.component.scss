@@ -1,0 +1,28 @@
+.calculated {
+    width: 420px;
+    // width: 100%;
+    height: 420px;
+    background: #00474B;
+    border-radius: 15px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+    &__tip-person,
+    &__total-person {
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+    &__total-person {
+        margin-top: 20px;
+    }
+    button {
+        width: 333px;
+        height: 48px;
+        background: #0D686D;
+        pointer-events: none;
+        border: unset;
+    }
+}
