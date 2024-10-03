@@ -16,6 +16,7 @@
     border-radius: 25px;
     background-color: #FFFFFF;
     @include mixins.flex(center,center,row);
+    gap: 20px;
   }
 
 }
