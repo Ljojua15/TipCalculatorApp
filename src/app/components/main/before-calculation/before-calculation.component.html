@@ -1,18 +1,21 @@
 <div class="before-calculation">
     <div class="before-calculation__bill">
         <p>Bill</p>
-        <input type="text" placeholder="0">
+        <input type="number" placeholder="0" (input)="billTake($event)" >
     </div>
 
 
     <div class="before-calculation__tip">
       <p>Select Tip %</p>
+      <h1></h1>
+
+
       <div class="before-calculation__tip--place">
         <ng-container *ngFor="let tips of tipsPercent; index as i">
-          <div *ngIf="tips.name !== 'Custom'" (click)="takeValue(i)" >
+          <div *ngIf="tips.name !== 'Custom'" (click)="percentTake(i)">
             {{ tips.name }}
           </div>
-          <input type="text" *ngIf="tips.name === 'Custom'" placeholder="{{tips.name}}" >
+          <input type="number" *ngIf="tips.name === 'Custom'" placeholder="{{tips.name}}" (input)="customPercentTake($event)" >
         </ng-container>
       </div>
     </div>
@@ -20,8 +23,9 @@
 
     <div class="before-calculation__people">
       <p>Number of People</p>
-      <input type="text" placeholder="0" >
+      <input type="number" placeholder="0"  (input)="peopleTake($event)" >
     </div>
+    {{sum}}
 </div>
 
 

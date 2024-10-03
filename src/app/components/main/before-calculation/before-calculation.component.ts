@@ -1,45 +1,50 @@
-import { Component } from '@angular/core';
+import { Component, Output } from '@angular/core';
 import { tipsPercent } from './tips';
 import { CommonModule } from '@angular/common';
 import { log } from 'console';
 import { AnySoaRecord } from 'dns';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-before-calculation',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, FormsModule],
   templateUrl: './before-calculation.component.html',
   styleUrl: './before-calculation.component.scss',
 })
 export class BeforeCalculationComponent {
+  public totalAmount: number = 0;
+  public tipAmount: number = 0;
   public readonly tipsPercent = tipsPercent;
-  public bill: number = 100;
-  public people: number = 5;
-  public percent: any = 0.5;
-  public totalAmountPerPerson: number = 0;
-  public tipAmountPerPerson: number = 0;
+  public bill: number = 0;
+  public people: number = 1;
+  public percent: any = 1;
+  public customPercent: any = 0;
+  sum: number = 0;
 
-  constructor() {
-    this.totoalAmount();
-    this.tipAmount();
+  constructor() {}
+
+  billTake(event: any): any {
+    this.bill = parseFloat(event.target.value);
+    console.log(this.bill, 'bill');
+    return this.bill;
   }
 
-  takeValue(index: number): number {
+  percentTake(index: number): number {
     this.percent = this.tipsPercent[index].value;
-    console.log(this.percent);
+    console.log(this.percent, 'NotCustom');
     return this.percent;
   }
 
-  totoalAmount(): number {
-    this.totalAmountPerPerson =
-      (this.bill + this.bill * this.percent) / this.people;
-    console.log(this.totalAmountPerPerson);
-    return this.totalAmountPerPerson;
+  customPercentTake(event: any): any {
+    this.customPercent = parseFloat(event.target.value);
+    console.log(this.customPercent, 'customPercent');
+    return this.bill;
   }
 
-  tipAmount(): number {
-    this.tipAmountPerPerson = (this.bill * this.percent) / this.people;
-    console.log(this.tipAmountPerPerson);
-    return this.tipAmountPerPerson;
+  peopleTake(event: any): any {
+    this.people = parseFloat(event.target.value);
+    console.log(this.people, 'people');
+    return this.bill;
   }
 }
