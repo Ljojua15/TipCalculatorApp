@@ -19,8 +19,8 @@ export class BeforeCalculationComponent implements OnChanges {
   public readonly tipsPercent = tipsPercent;
   public bill: any = 0;
   public people: number = 1;
-  public percent: any = 1;
-  public customPercent: any = 0;
+  public percent!:any;
+  public customPercent!:number;
   sum: number = 0;
 
   takenInfo = new Map([
@@ -69,13 +69,14 @@ export class BeforeCalculationComponent implements OnChanges {
 
   calculateBillS(){
 
+    console.log(this.customPercent);
     
-    return this.customPercent ?( this.bill +(this.bill * this.customPercent / 100)) / this.people : 
-    ( this.bill +(this.bill * this.percent / 100)) / this.people
+    return this.customPercent ? ( this.bill +(this.bill * this.customPercent /100)) / this.people : 
+    ( this.bill +(this.bill * this.percent )) / this.people
   }
 
   calcuTipS(){
     return this.customPercent ? (this.bill * this.customPercent / 100) / this.people :
-    (this.bill * this.percent / 100) / this.people
+    (this.bill * this.percent ) / this.people
   }
 }
