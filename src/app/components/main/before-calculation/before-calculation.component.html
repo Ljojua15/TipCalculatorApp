@@ -1,30 +1,34 @@
-<div class="before-calculation">
-    <div>{{calcuTipS()}}</div>
-    <div>{{calculateBillS()}}</div>
-    <div class="before-calculation__bill">
-        <p>Bill</p>
-        <input type="number" placeholder="0" (input)="billTake($event)">
-    </div>
+<div class="before">
+    <div class="before__calculation">
+        <div class="before__calculation__bill">
+            <p>Bill</p>
+            <input type="number" placeholder="0" (input)="billTake($event)">
+        </div>
 
 
-    <div class="before-calculation__tip">
-        <p>Select Tip %</p>
-        <h1></h1>
+        <div class="before__calculation__tip">
+            <p>Select Tip %</p>
+            <h1></h1>
 
 
-        <div class="before-calculation__tip--place">
-            <ng-container *ngFor="let tips of tipsPercent; index as i">
-                <div *ngIf="tips.name !== 'Custom'" (click)="percentTake(i)">
-                    {{ tips.name }}
-                </div>
-                <input type="number" *ngIf="tips.name === 'Custom'" placeholder="{{tips.name}}" (input)="customPercentTake($event)">
-            </ng-container>
+            <div class="before__calculation__tip--place">
+                <ng-container *ngFor="let tips of tipsPercent; index as i">
+                    <div *ngIf="tips.name !== 'Custom'" (click)="percentTake(i)">
+                        {{ tips.name }}
+                    </div>
+                    <input type="number" *ngIf="tips.name === 'Custom'" placeholder="{{tips.name}}" (input)="customPercentTake($event)">
+                </ng-container>
+            </div>
+        </div>
+
+
+        <div class="before__calculation__people">
+            <p>Number of People</p>
+            <input type="number" placeholder="0" (input)="peopleTake($event)">
         </div>
     </div>
-
-
-    <div class="before-calculation__people">
-        <input type="number" placeholder="0" (input)="peopleTake($event)">
+    <div class="before__after">
+        <app-child-calculated class="test" [test]="calculateBillS()" [calculateAllTipS]="calcuTipS()" />
     </div>
+
 </div>
-<app-child-calculated class="test" [test]="calculateBillS()" [calculateAllTipS]="calcuTipS()" />

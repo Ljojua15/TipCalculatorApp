@@ -7,5 +7,7 @@
         <p>Total</p>
         <h2>{{test}}</h2>
     </div>
-    <button>RESET</button>
+    {{calculateAllTipS}}
+    <button [class.pointer]="test<= 0" (click)="resetBtn()">RESET</button>
+
 </div>

@@ -17,7 +17,7 @@ export class BeforeCalculationComponent implements OnChanges {
   public totalAmount: number = 0;
   public tipAmount: number = 0;
   public readonly tipsPercent = tipsPercent;
-  public bill: number = 0;
+  public bill: any = 0;
   public people: number = 1;
   public percent: any = 1;
   public customPercent: any = 0;
@@ -43,31 +43,32 @@ export class BeforeCalculationComponent implements OnChanges {
   }
   billTake(event: any): any {
     this.bill = parseFloat(event.target.value);
-    // console.log(this.bill, 'bill')
+    if(this.bill !== '' && isNaN(this.bill)){
+      console.log('Invalid input');
+    }
     return this.bill;
   }
 
   percentTake(index: number): number {
     this.percent = this.tipsPercent[index].value;
-    console.log(this.percent, 'NotCustom');
+    // console.log(this.percent, 'NotCustom');
     return this.percent;
   }
 
   customPercentTake(event: any): any {
     this.customPercent = parseFloat(event.target.value);
-    console.log(this.customPercent, 'customPercent');
+    // console.log(this.customPercent, 'customPercent');
     return this.bill;
   }
 
   peopleTake(event: any): any {
     this.people = parseFloat(event.target.value);
-    console.log(this.people, 'people');
+    // console.log(this.people, 'people');
     return this.bill;
   }
 
   calculateBillS(){
-    console.log(this.customPercent ?( this.bill +(this.bill * this.customPercent / 100)) / this.people : 
-    ( this.bill +(this.bill * this.percent / 100)) / this.people, 'es ra chemi');
+
     
     return this.customPercent ?( this.bill +(this.bill * this.customPercent / 100)) / this.people : 
     ( this.bill +(this.bill * this.percent / 100)) / this.people

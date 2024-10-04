@@ -21,8 +21,12 @@
     button {
         width: 333px;
         height: 48px;
-        background: #0D686D;
-        pointer-events: none;
+        background-color: #9FE8DF;
+        cursor: pointer;
         border: unset;
+    }
+    .pointer {
+        pointer-events: none;
+        background-color: #0D686D;
     }
 }
